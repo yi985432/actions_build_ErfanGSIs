@@ -1,0 +1,76 @@
+name: build_ErfanGSIs
+
+on:
+#  release:
+#    types: [published]
+#  push:
+#    branches:
+#      - master
+#    paths:
+#      - '.config'
+#  schedule:
+#    - cron: 0 8 * * 5
+  watch:
+    types: [started]
+    
+env:
+  ROM_URL: https://download.c.realme.com/osupdate/RMX1901_11_OTA_1120_all_5fcT8erEU2dx.ozip
+  ROM_NAME: MIUI
+  TZ: Asia/Shanghai
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+
+    steps:
+       - name: Checkout
+         uses: actions/checkout@master
+       
+       - name: Clean Up
+         run: |
+           docker rmi `docker images -q`
+           sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d
+           sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* mysql* php*
+           sudo -E apt-get update
+           sudo -E apt-get -y autoremove --purge
+           sudo -E apt-get clean 
+           
+       - name: Initialization environment
+         run: |
+            sudo -E apt-get -qq update
+            sudo -E apt-get -qq install git openjdk-8-jdk wget
+       
+       - name: Clone ErfanGSI Source Code
+         run: git clone --recurse-submodules https://github.com/erfanoabdi/ErfanGSIs.git
+       
+       - name: Setting up ErfanGSI requirements
+         run: |
+              sudo chmod -R 777 ErfanGSIs
+              cd ErfanGSIs
+              sudo bash setup.sh
+       
+       - name: Download Stock Rom & Generate GSI
+         run: sudo ./ErfanGSIs/url2GSI.sh $ROM_URL $ROM_NAME
+       
+       - name: 7zip GSI_AB  
+         run: |
+              sudo apt-get install p7zip
+              cd /home/runner/work/actions_build_ErfanGSIs/actions_build_ErfanGSIs
+              mkdir final
+              7z a -t7z -r final/GSI_AB.7z ErfanGSIs/output/*AB*
+
+        - name: Upload GSI_AB to WeTransfer
+         run: |
+              curl -sL https://git.io/file-transfer | sh
+              ./transfer wet final/GSI_AB.7z
+    
+       
+       - name: 7zip GSI_Aonly  
+         run: |
+              7z a -t7z -r final/GSI_Aonly.7z ErfanGSIs/output/*Aonly*
+    
+       - name: Upload GSI_Aonly to WeTransfer
+         run: |
+              ./transfer wet final/GSI_Aonly.7z 
+            
