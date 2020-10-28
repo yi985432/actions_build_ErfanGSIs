@@ -14,7 +14,7 @@ on:
     types: [started]
     
 env:
-  ROM_URL: https://bigota.d.miui.com/V11.0.3.0.QEECNXM/miui_MIMIX3_V11.0.3.0.QEECNXM_4d73488207_10.0.zip
+  ROM_URL: http://bigota.d.miui.com/V12.0.4.0.QJCCNXM/miui_LANCELOT_V12.0.4.0.QJCCNXM_c97f5caa5e_10.0.zip
   ROM_NAME: MIUI
   TZ: Asia/Shanghai
 
@@ -53,15 +53,27 @@ jobs:
        - name: Download Stock Rom & Generate GSI
          run: sudo ./ErfanGSIs/url2GSI.sh $ROM_URL $ROM_NAME
        
-       - name: Zip GSI  
+       - name: 7zip GSI_AB  
          run: |
+              sudo apt-get install p7zip
+              cd /home/runner/work/actions_build_ErfanGSIs/actions_build_ErfanGSIs
               mkdir final
-              zip -r final/GSI.zip /home/runner/work/actions_build_ErfanGSIs/actions_build_ErfanGSIs/ErfanGSIs/output/
-       
-       - name: Upload GSI to BitSend
+              7z a -t7z -r final/GSI_AB.7z ErfanGSIs/output/*AB*
+
+       - name: Upload GSI_AB to WeTransfer
          run: |
               curl -sL https://git.io/file-transfer | sh
-              ./transfer bit final/GSI.zip
+              ./transfer wet final/GSI_AB.7z
+    
+       - name: 7zip GSI_Aonly  
+         run: |
+              7z a -t7z -r final/GSI_Aonly.7z ErfanGSIs/output/*Aonly*
+    
+       - name: Upload GSI_Aonly to WeTransfer
+         run: |
+              ./transfer wet final/GSI_Aonly.7z 
+            
+
 
          
             
