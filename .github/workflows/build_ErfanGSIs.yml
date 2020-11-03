@@ -14,7 +14,7 @@ on:
     types: [started]
     
 env:
-  ROM_URL: https://bigota.d.miui.com/V11.0.3.0.QEECNXM/miui_MIMIX3_V11.0.3.0.QEECNXM_4d73488207_10.0.zip
+  ROM_URL: https://bigota.d.miui.com/20.11.2/miui_CAS_20.11.2_d3169b82ac_11.0.zip
   ROM_NAME: MIUI
   TZ: Asia/Shanghai
 
@@ -42,7 +42,7 @@ jobs:
             sudo -E apt-get -qq install git openjdk-8-jdk wget
        
        - name: Clone ErfanGSI Source Code
-         run: git clone --recurse-submodules https://github.com/erfanoabdi/ErfanGSIs.git
+         run: git clone --recurse-submodules https://github.com/Treble-Experience/ErfanGSIs-Hitsuki.git ErfanGSIs
        
        - name: Setting up ErfanGSI requirements
          run: |
@@ -56,7 +56,8 @@ jobs:
        - name: Zip GSI  
          run: |
               mkdir final
-              zip -r final/GSI.zip /home/runner/work/actions_build_ErfanGSIs/actions_build_ErfanGSIs/ErfanGSIs/output/*AB*
+              sudo apt-get install p7zip
+              7z a -t7z -r final/GSI.zip /home/runner/work/actions_build_ErfanGSIs/actions_build_ErfanGSIs/ErfanGSIs/output/*AB*
        
        - name: Upload GSI to BitSend
          run: |
