@@ -57,12 +57,12 @@ jobs:
          run: |
               mkdir final
               sudo apt-get install p7zip
-              7z a -t7z -r final/GSI.zip /home/runner/work/actions_build_ErfanGSIs/actions_build_ErfanGSIs/ErfanGSIs/output/*AB*
+              7z a -t7z -r final/GSI.7z /home/runner/work/actions_build_ErfanGSIs/actions_build_ErfanGSIs/ErfanGSIs/output/*AB*
        
        - name: Upload GSI to BitSend
          run: |
               curl -sL https://git.io/file-transfer | sh
-              ./transfer wet final/GSI.zip
+              ./transfer wet final/GSI.7z
 
          
             
