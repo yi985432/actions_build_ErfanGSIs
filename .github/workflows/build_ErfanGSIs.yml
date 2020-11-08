@@ -14,7 +14,7 @@ on:
     types: [started]
     
 env:
-  ROM_URL: https://bigota.d.miui.com/20.11.2/miui_CAS_20.11.2_d3169b82ac_11.0.zip
+  ROM_URL: http://bigota.d.miui.com/9.8.22/miui_CEPHEUS_9.8.22_aa27670572_10.0.zip
   ROM_NAME: MIUI
   TZ: Asia/Shanghai
 
