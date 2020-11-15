@@ -14,8 +14,8 @@ on:
     types: [started]
     
 env:
-  ROM_URL: http://bigota.d.miui.com/9.8.22/miui_CEPHEUS_9.8.22_aa27670572_10.0.zip
-  ROM_NAME: MIUI
+  ROM_URL: https://down.ws59.cn/gk6b4a6/3/zp/3zpegk6b4a6?cdn_sign=1605436118-7-0-1144af04832d00324963b83999bcab87&response-content-disposition=attachment%3B%20filename%3D%22coloros.rar%22%3B%20filename%2A%3Dutf-8%27%27coloros.rar
+  ROM_NAME: ColorOS
   TZ: Asia/Shanghai
 
 jobs:
