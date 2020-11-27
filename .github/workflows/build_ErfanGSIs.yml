@@ -14,8 +14,8 @@ on:
     types: [started]
     
 env:
-  ROM_URL: https://down.ws59.cn/gk6b4a6/3/zp/3zpegk6b4a6?cdn_sign=1605436118-7-0-1144af04832d00324963b83999bcab87&response-content-disposition=attachment%3B%20filename%3D%22coloros.rar%22%3B%20filename%2A%3Dutf-8%27%27coloros.rar
-  ROM_NAME: ColorOS
+  ROM_URL: https://116-207-104-5.ksyungslb.com/bigota.d.miui.com/20.11.25/miui_PYXIS_20.11.25_4e36e3c5e3_10.0.zip?ksy_gslb_referer=https%3A%2F%2Fxiaomifirmwareupdater.com%2Fmiui%2Fpyxis%2Fweekly%2F20.11.25%2F
+  ROM_NAME: MIUI
   TZ: Asia/Shanghai
 
 jobs:
