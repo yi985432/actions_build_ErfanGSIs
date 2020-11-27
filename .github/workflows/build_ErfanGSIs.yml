@@ -14,7 +14,7 @@ on:
     types: [started]
     
 env:
-  ROM_URL: https://116-207-104-5.ksyungslb.com/bigota.d.miui.com/20.11.25/miui_PYXIS_20.11.25_4e36e3c5e3_10.0.zip?ksy_gslb_referer=https%3A%2F%2Fxiaomifirmwareupdater.com%2Fmiui%2Fpyxis%2Fweekly%2F20.11.25%2F
+  ROM_URL: https://bigota.d.miui.com/20.9.4/miui_MI8SE_20.9.4_8b18fec4c4_10.0.zip
   ROM_NAME: MIUI
   TZ: Asia/Shanghai
 
