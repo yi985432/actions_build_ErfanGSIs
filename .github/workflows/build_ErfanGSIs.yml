@@ -14,7 +14,7 @@ on:
     types: [started]
     
 env:
-  ROM_URL: https://bigota.d.miui.com/21.2.3/miui_VIOLET_21.2.3_581daa24ff_10.0.zip
+  ROM_URL: https://bigota.d.miui.com/9.8.22/miui_CEPHEUS_9.8.22_aa27670572_10.0.zip
   ROM_NAME: MIUI
   TZ: Asia/Shanghai
 
