@@ -3,7 +3,7 @@ name: build_ErfanGSIs
 on:
 #  release:
 #    types: [published]
-#  push:
+  push:
 #    branches:
 #      - master
 #    paths:
