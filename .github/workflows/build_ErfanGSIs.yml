@@ -14,7 +14,7 @@ on:
     types: [started]
     
 env:
-  ROM_URL: https://bigota.d.miui.com/21.4.22/miui_LAURUS_21.4.22_34a355177c_10.0.zip
+  ROM_URL: https://bigota.d.miui.com/21.4.14/miui_LAURUS_21.4.14_e47f5a0fd0_10.0.zip
   ROM_NAME: MIUI
   TZ: Asia/Shanghai
 
@@ -49,8 +49,7 @@ jobs:
               sudo chmod -R 777 ErfanGSIs
               cd ErfanGSIs
               sudo bash setup.sh
-              sudo sed -i '7c AB=true' url2GSI.sh
-              sudo sed -i '8c Aonly=false' url2GSI.sh
+
        - name: Download Stock Rom & Generate GSI
          run: sudo ./ErfanGSIs/url2GSI.sh $ROM_URL $ROM_NAME
        
