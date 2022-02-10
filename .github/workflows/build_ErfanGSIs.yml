@@ -14,7 +14,7 @@ on:
     types: [started]
     
 env:
-  ROM_URL: https://bigota.d.miui.com/21.4.14/miui_LAURUS_21.4.14_e47f5a0fd0_10.0.zip
+  ROM_URL: https://bigota.d.miui.com/V12.0.9.0.QJCCNXM/miui_LANCELOT_V12.0.9.0.QJCCNXM_7132831d46_10.0.zip
   ROM_NAME: MIUI
   TZ: Asia/Shanghai
 
@@ -51,7 +51,7 @@ jobs:
               sudo bash setup.sh
 
        - name: Download Stock Rom & Generate GSI
-         run: sudo ./ErfanGSIs/url2GSI.sh $ROM_URL $ROM_NAME
+         run: sudo ./ErfanGSIs/url2GSI.sh $ROM_URL $ROM_NAME -b
        
        - name: 7z GSI  
          run: |
